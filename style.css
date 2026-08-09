@@ -155,6 +155,7 @@ button, input, textarea { font-family: inherit; }
   text-align: left;
   padding: 0.7rem 0.75rem;
   border-radius: var(--radius);
+  margin-right: -0.8rem;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
   white-space: nowrap;
@@ -194,7 +195,7 @@ button, input, textarea { font-family: inherit; }
 input:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
 
 .sidebar-footer {
