@@ -37,7 +37,7 @@ button, input, textarea { font-family: inherit; }
 }
 
 .sidebar {
-  width: 277px;
+  width: 282px;
   flex-shrink: 0;
   background: var(--bg-elevated);
   border-right: 1px solid var(--line);
