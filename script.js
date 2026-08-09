@@ -99,17 +99,26 @@ window.classify = async function(phase) {
         }
 
         const inputName = session.inputNames[0];
-        const labelOutputName = session.outputNames[0]; 
         const probOutputName = session.outputNames[1];  
 
         const feeds = {};
         feeds[inputName] = tensor;
         const results = await session.run(feeds);
 
-        const predictedIndex = Number(results[labelOutputName].data[0]);
-        const predictedCategory = categoryLabels[predictedIndex];
         const probabilities = results[probOutputName].data;
-        const mainConfidence = (probabilities[predictedIndex] * 100).toFixed(2);
+
+        let maxProbIndex = 0;
+        let maxProbValue = probabilities[0];
+        
+        for (let i = 1; i < probabilities.length; i++) {
+            if (probabilities[i] > maxProbValue) {
+                maxProbValue = probabilities[i];
+                maxProbIndex = i;
+            }
+        }
+
+        const predictedCategory = categoryLabels[maxProbIndex];
+        const mainConfidence = (maxProbValue * 100).toFixed(2);
 
         outputSpan.innerText = `${predictedCategory} (${mainConfidence}%)`;
 
